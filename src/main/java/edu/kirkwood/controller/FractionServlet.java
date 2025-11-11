@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import static edu.kirkwood.shared.Helpers.isANumber;
 import static edu.kirkwood.shared.Helpers.isAnInt;
@@ -24,11 +26,13 @@ public class FractionServlet extends HttpServlet {
         // Step 1: Get raw data
         String numerator1 = req.getParameter("numerator1");
         String denominator1 = req.getParameter("denominator1");
+        String operator = req.getParameter("operator");
         String numerator2 = req.getParameter("numerator2");
         String denominator2 = req.getParameter("denominator2");
         // Step 2: Set raw data as attributes
         req.setAttribute("numerator1",numerator1);
         req.setAttribute("denominator1",denominator1);
+        req.setAttribute("operator",operator);
         req.setAttribute("numerator2",numerator2);
         req.setAttribute("denominator2",denominator2);
         // Step 4: Validate raw data
@@ -46,6 +50,12 @@ public class FractionServlet extends HttpServlet {
         } else if(!isAnInt(denominator1)) {
             req.setAttribute("denominator1Error", "The first denominator must be an integer");
             errorsFound = true;
+        }
+        String[] validOperators = {"add", "subtract", "multiply", "divide"};
+        List<String> validOperators2 = Arrays.asList(validOperators);
+        if(!validOperators2.contains(operator)) {
+            errorsFound = true;
+            req.setAttribute("operatorError", "The operator must be one of the following: " + Arrays.toString(validOperators));
         }
         if(numerator2 == null || numerator2.isEmpty()){
             req.setAttribute("numerator2Error", "The second numerator is required");

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,7 +24,12 @@
                 </div>
             </div>
             <div class="col-1 d-flex justify-content-center display-3">
-                <span>+</span>
+                <select class="form-select form-select-lg" name="operator">
+                    <option <c:if test="${operator eq 'add'}">selected</c:if> value="add">+</option>
+                    <option <c:if test="${operator eq 'subtract'}">selected</c:if> value="subtract">-</option>
+                    <option <c:if test="${operator eq 'multiply'}">selected</c:if> value="multiply">×</option>
+                    <option <c:if test="${operator eq 'divide'}">selected</c:if> value="divide">÷</option>
+                </select>
             </div>
             <div class="col-1">
                 <div class="form-group mb-2 pb-2 border-bottom border-5">
@@ -42,10 +48,11 @@
     <div class="text-danger">
         ${numerator1Error}<br>
         ${denominator1Error}<br>
+        ${operatorError}<br>
         ${numerator2Error}<br>
         ${denominator2Error}
     </div>
-    
+
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
