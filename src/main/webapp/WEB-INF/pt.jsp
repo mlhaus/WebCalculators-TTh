@@ -23,12 +23,12 @@
             <p class="lead">Enter two numbers (and to how many decimal places) then press submit to get the hypotenuse of two sides.</p>
             <form method="POST" action="pt">
                 <div class="form-group mb-2">
-                    <label for="num1">Number 1:</label>
+                    <label for="num1">Side 1:</label>
                     <input type="text" class="form-control" id="num1" name="num1" value="${num1}">
                     <div class="text-danger">${num1Error}</div>
                 </div>
                 <div class="form-group mb-2">
-                    <label for="num2">Number 2:</label>
+                    <label for="num2">Side 2:</label>
                     <input type="text" class="form-control" id="num2" name="num2" value="${num2}">
                     <div class="text-danger">${num2Error}</div>
                 </div>

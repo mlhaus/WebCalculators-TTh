@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+import static edu.kirkwood.shared.Helpers.isANumber;
+
 @WebServlet(value="/pt")
 public class PythagoreanTheoremServlet extends HttpServlet {
     @Override
@@ -31,26 +33,44 @@ public class PythagoreanTheoremServlet extends HttpServlet {
             req.setAttribute("num1Error","Please enter a value for side 1");
             errorsFound = true;
         }
-
+        if (!isANumber(side1)) {
+            req.setAttribute("num1Error","Side 1 is not a valid number");
+            errorsFound = true;
+        }
         if (side2 == null || side2.isEmpty()){
             req.setAttribute("num2Error","Please enter a value for side 2");
             errorsFound = true;
         }
+        if (!isANumber(side2)) {
+            req.setAttribute("num2Error","Side 2 is not a valid number");
+            errorsFound = true;
+        }
 
+        // sets decimal places to two if user leaves it blank.
+        if (decimalPlaces == null || decimalPlaces.isEmpty()){
+            req.setAttribute("placesError","A value for decimal places is required.");
+            errorsFound = true;
+        }
+        if (!isANumber(decimalPlaces)) {
+            req.setAttribute("placesError","The entered value is not a valid decimal place.");
+            errorsFound = true;
+        }
         // this is done so this is only checked if textboxes are not empty.
         if (!errorsFound){
             if (Double.parseDouble(req.getParameter("num1"))<=0){
                 req.setAttribute("num1Error","Side 1 is not a positive number");
                 errorsFound = true;
             }
+
             if (Double.parseDouble(req.getParameter("num2"))<=0){
                 req.setAttribute("num2Error","Side 2 is not a positive number");
                 errorsFound = true;
             }
-        }
-        // sets decimal places to two if user leaves it blank.
-        if (decimalPlaces == null || decimalPlaces.isEmpty()){
-            req.setAttribute("places","2");
+            if (Integer.parseInt(req.getParameter("places"))<0){
+                req.setAttribute("num2Error","decimal place cannot be negitive.");
+                errorsFound = true;
+            }
+
         }
 
 
