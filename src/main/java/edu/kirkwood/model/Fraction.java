@@ -68,7 +68,7 @@ public class Fraction implements Comparable<Fraction> {
         }
         if(denominator < 0){
             numerator *= -1;
-            denominator = Math.abs(denominator);
+            denominator *= -1;
         }
         this.denominator = denominator;
     }
@@ -174,8 +174,10 @@ public class Fraction implements Comparable<Fraction> {
                 result = numerator + "/" + this.denominator;
             }
         }
-
-        return result;
+        if (whole == 0) {
+            return this.toString();
+        }
+        return String.valueOf(whole) + " " + String.valueOf((Math.abs(remainder))) + "/" + this.denominator;
     }
 
     /**
