@@ -61,7 +61,7 @@ public class JsonMovieDAO implements MovieDAO {
         int currentPage = 1;
         while(true) {
             String rawData = getRawData(title, currentPage);
-//        System.out.println(prettyFormatter(rawData));
+            System.out.println(prettyFormatter(rawData));
             Gson gson = new GsonBuilder()
                     .registerTypeAdapter(LocalDate.class, new JsonTypeAdapter.LocalDateDeserializer())
                     .create();
@@ -79,6 +79,7 @@ public class JsonMovieDAO implements MovieDAO {
                     movie.setYear(result.getRelease_date().getYear());
                 }
                 movie.setPlot(result.getOverview());
+                movie.setPoster(result.getPoster_path());
                 movies.add(movie);
             });
             if (movieResponse.getTotal_pages() > currentPage) {

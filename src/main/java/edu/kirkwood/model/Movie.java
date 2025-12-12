@@ -7,18 +7,20 @@ import java.util.Comparator;
 public class Movie implements Comparable<Movie> {
     private String id;
     private String title;
-    private int year;
+    private int releaseYear;
     private String plot;
+    private String poster;
 
     public Movie() {
 
     }
 
-    public Movie(String id, String title, int year, String plot) {
+    public Movie(String id, String title, int releaseYear, String plot, String poster) {
         this.id = id;
         this.title = title;
-        this.year = year;
+        this.releaseYear = releaseYear;
         this.plot = plot;
+        this.poster = poster;
     }
 
     public String getId() {
@@ -37,12 +39,12 @@ public class Movie implements Comparable<Movie> {
         this.title = title;
     }
 
-    public int getYear() {
-        return year;
+    public int getReleaseYear() {
+        return releaseYear;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setYear(int releaseYear) {
+        this.releaseYear = releaseYear;
     }
 
     public String getPlot() {
@@ -53,12 +55,20 @@ public class Movie implements Comparable<Movie> {
         this.plot = plot;
     }
 
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
                 "id='" + id + '\'' +
                 ", title='" + title + '\'' +
-                ", year=" + year +
+                ", releaseYear=" + releaseYear +
                 ", plot='" + plot + '\'' +
                 '}';
     }
@@ -77,6 +87,6 @@ public class Movie implements Comparable<Movie> {
     public static Comparator<Movie> compareTitleIgnoreCase = (m1, m2) -> m1.getTitle().compareToIgnoreCase(m2.getTitle());
     public static Comparator<Movie> compareTitleLambda2 = Comparator.comparing(m -> m.getTitle());
     public static Comparator<Movie> compareTitle = Comparator.comparing(Movie::getTitle); // Ignores capitalization; MethodReference
-    public static Comparator<Movie> compareYear = Comparator.comparingInt(Movie::getYear); // MethodReference
+    public static Comparator<Movie> compareYear = Comparator.comparingInt(Movie::getReleaseYear); // MethodReference
 }
 
