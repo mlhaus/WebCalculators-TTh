@@ -13,6 +13,7 @@
     <li><a href="temperature">Mouftaou's Temperature Calculator</a></li>
     <li><a href="metricconversion">Cel's Metric Conversion Calculator</a> </li>
     <li><a href="compoundInterest">Cooper's Compound Interest Calculator</a></li>
+    <li><a href="movies">Search for Movies!</a></li>
 </ul>
 </body>
 </html>
