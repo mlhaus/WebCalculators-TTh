@@ -14,6 +14,7 @@
     <li><a href="metricconversion">Cel's Metric Conversion Calculator</a> </li>
     <li><a href="compoundInterest">Cooper's Compound Interest Calculator</a></li>
     <li><a href="bloodPressure">Logan's Blood Pressure (MAP) Calculator</a></li>
+    <li><a href="jan-temperature">Jan's Temperature Calculator</a></li>
 </ul>
 </body>
 </html>
